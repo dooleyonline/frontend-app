@@ -1,3 +1,75 @@
+Mobile version of frontend-web.
+
+You can reproduce this via
+
+1.
+
+```
+npm install @capacitor/core @capacitor/cli
+
+npx cap init dooleyonline com.dooleyonline.app --web-dir=build
+
+npm install @capacitor/android
+
+npx cap add android
+
+npm install @capacitor/ios
+
+npx cap add ios
+```
+
+2. change `capacitor.config.json` to
+```
+import type { CapacitorConfig } from '@capacitor/cli';
+
+const config: CapacitorConfig = {
+  appId: 'com.dooleyonline.app',
+  appName: 'dooleyonline',
+  //webDir: 'build' we use local server instead
+  server: {
+    url: "http://(host device ip address):3000",
+    cleartext: true
+  }
+};
+
+export default config;
+```
+
+3. change one line in `package.json `,
+```
+{
+  ...
+  "scripts": {
+    ...
+    "start": "next start -H 0.0.0.0 -p 3000",
+    ...
+  },
+...
+}
+```
+
+4. don't forget to add .env file
+   
+5. change one line in `src/lib/api/core/config.ts`
+```
+export const API_BASE_URL =
+  process.env.NEXT_PUBLIC_API_BASE_URL || "/api";
+```
+
+6. run
+```
+npm run build
+
+npm run start
+
+(in separate terminal)
+npx cap sync
+
+npx cap open android
+
+npx cap open ios
+```
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
