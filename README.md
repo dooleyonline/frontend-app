@@ -1,4 +1,4 @@
-Mobile version of frontend-web.
+Mobile version of frontend-web:
 
 You can reproduce this via
 
