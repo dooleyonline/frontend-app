@@ -2,7 +2,9 @@ Mobile version of frontend-web.
 
 You can reproduce this via
 
-1.
+1. git clone frontend-web
+
+2.
 
 ```
 npm install @capacitor/core @capacitor/cli
@@ -18,7 +20,7 @@ npm install @capacitor/ios
 npx cap add ios
 ```
 
-2. change `capacitor.config.json` to
+3. change `capacitor.config.json` to
 ```
 import type { CapacitorConfig } from '@capacitor/cli';
 
@@ -35,7 +37,7 @@ const config: CapacitorConfig = {
 export default config;
 ```
 
-3. change one line in `package.json `,
+4. change one line in `package.json `,
 ```
 {
   ...
@@ -48,15 +50,15 @@ export default config;
 }
 ```
 
-4. don't forget to add .env file
+5. don't forget to add .env file
    
-5. change one line in `src/lib/api/core/config.ts`
+6. change one line in `src/lib/api/core/config.ts`
 ```
 export const API_BASE_URL =
   process.env.NEXT_PUBLIC_API_BASE_URL || "/api";
 ```
 
-6. run
+7. run
 ```
 npm run build
 
@@ -69,6 +71,11 @@ npx cap open android
 
 npx cap open ios
 ```
+
+8. for ios, you have to configure signing
+
+following is the readme from original repo (frontend-web)
+___________________________________________________________________________________________________________________
 
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
